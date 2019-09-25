@@ -8,23 +8,23 @@ namespace MvcCore.Data
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "الزامی است")]
         [DisplayName("دسته بندی")]
         public int CategoryId { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "الزامی است")]
         [MaxLength(30)]
         [DisplayName("نام وبلاگ")]
         public string Name { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "الزامی است")]
         [DisplayName("تاریخ اعتبار")]
         public DateTime MaxDate { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "الزامی است")]
         [DisplayName("حداکثر پست")]
         public int MaxPostCount { get; set; }
 
