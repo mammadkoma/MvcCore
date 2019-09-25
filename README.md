@@ -6,9 +6,11 @@
 
 ویژگی های مهم پروژه
 
-The best performance
-RestFull
-Responsive
+- The best performance
+
+- RestFull
+
+- Responsive
 
 ![alt text](https://github.com/mammadkoma/MvcCore/blob/master/wwwroot/Images/01.jpg)
 ![alt text](https://github.com/mammadkoma/MvcCore/blob/master/wwwroot/Images/02.jpg)
