@@ -2,3 +2,5 @@
 1. asp.net mvc core
 2. vs code
 3. devexpress (DevExpress Universal Complete) from : https://downloadly.ir/software/programming/devexpress-universal-vcl/
+
+![alt text](https://github.com/mammadkoma/MvcCore/wwwroot/Images/01.jpg)
