@@ -12,5 +12,5 @@
 
 - Responsive
 
-![alt text](https://github.com/mammadkoma/MvcCore/blob/master/wwwroot/Images/01.jpg)
-![alt text](https://github.com/mammadkoma/MvcCore/blob/master/wwwroot/Images/02.jpg)
+
+![alt text](https://github.com/mammadkoma/MvcCore/blob/master/wwwroot/Images/gif01.gif)
