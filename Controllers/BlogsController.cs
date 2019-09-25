@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace MvcCore.Data.Controllers
 {
+    // hi
     [Route("api/[controller]/[action]")]
     public class BlogsController : Controller
     {
