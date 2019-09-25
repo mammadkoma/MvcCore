@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\sap-komaei.CII\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\sap-komaei.CII\\.nuget\\packages",
+      "E:\\dotnet\\sdk\\NuGetFallbackFolder"
+    ]
+  }
+}

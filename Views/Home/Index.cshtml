@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    @(Html.DevExtreme().DataGrid<MvcCore.Data.Blog>().ID("gridBlogs")
+        .DataSource(ds => ds.Mvc().Key("Id")
+            .Controller("Blogs")
+            .LoadAction("Get")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
+        )
+        .RemoteOperations(true)
+        .Columns(col =>
+        {
+            col.AddFor(m => m.CategoryId)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Categories").LoadAction("CategoriesLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            );
+            col.AddFor(m => m.Name); //.GroupIndex(0)
+            col.AddFor(m => m.MaxPostCount).Format(Format.FixedPoint);
+            //col.AddFor(m => m.MaxPostCount).Format(Format.FixedPoint);
+            //col.AddFor(m=>m.InsertDate).DataType(GridColumnDataType.String).FormItem(f=>f.Visible(false));
+            col.Add().Caption("ستون گروهی").Alignment(HorizontalAlignment.Center).Columns(c=>{
+               
+                c.AddFor(m => m.MaxDate).DataType(GridColumnDataType.String)
+                .EditCellTemplate(@<text><div style="direction:ltr">@(Html.DevExtreme().TextBox().Mask("0000/00/00").ShowClearButton(true)
+                .Value(new JS("data.MaxDate")).OnValueChanged(@"function(args){ setValue(args.value); }")  )</div> </text>);
+                c.AddFor(m=>m.InsertDate).DataType(GridColumnDataType.String).FormItem(f=>f.Visible(false));
+            });
+        })
+        .Editing(e => e
+            .Mode(GridEditMode.Popup)
+            .Popup(p => p.Width("60%").Height("60%").Title("ویرایش وبلاگ").ShowTitle(true))
+            .AllowAdding(true)
+            .AllowUpdating(true)
+            .AllowDeleting(true)
+        )
+        .Export(e=>e.Enabled(true))
+        .Sorting(s=>s.Mode(GridSortingMode.Multiple))
+        .AllowColumnResizing(true)
+        .GroupPanel(g => g.Visible(true))
+        .Grouping(g => g.AutoExpandAll(false))
+        .ShowRowLines(true)
+        .RtlEnabled(true)
+        .RowAlternationEnabled(true)
+        .Selection(s => s.Mode(SelectionMode.Single))
+        .HoverStateEnabled(true)
+        .ShowBorders(true)
+        .AllowColumnReordering(true)
+
+        .Paging(p => p.PageSize(10))
+        .Pager(p => p
+            .AllowedPageSizes(new int[] { 5,10,15,20,25,50,100 }).ShowInfo(true).ShowNavigationButtons(true)
+            //.ShowPageSizeSelector(true).Visible(true)
+        )
+        .SearchPanel(s => s.Visible(true).HighlightSearchText(true))
+        .FilterRow(f=>f.Visible(true)).HeaderFilter(f => f.Visible(true))
+        
+        .Summary(s => s
+        .TotalItems(ti => {
+            ti.AddFor(m => m.MaxPostCount).SummaryType(SummaryType.Sum).ValueFormat(Format.FixedPoint);
+        })
+        .GroupItems(gi => {
+            gi.AddFor(m => m.MaxPostCount).SummaryType(SummaryType.Sum).ShowInGroupFooter(true).ValueFormat(Format.FixedPoint);
+            gi.Add().SummaryType(SummaryType.Count).ValueFormat(Format.FixedPoint);
+        }))
+
+        //.WordWrapEnabled(true)
+        .ColumnAutoWidth(true)
+        //.Scrolling(s=>s.Mode(GridScrollingMode.Infinite))
+    )
+</div>
+
+<script type="text/javascript">
+
+</script>
