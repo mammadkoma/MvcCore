@@ -13,22 +13,22 @@
         .RemoteOperations(true)
         .Columns(col =>
         {
+            col.AddFor(m=>m.Id).FormItem(f=>f.Visible(false));
             col.AddFor(m => m.CategoryId)
             .Lookup(lookup => lookup
                 .DataSource(d => d.Mvc().Controller("Categories").LoadAction("CategoriesLookup").Key("Value"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
             );
-            col.AddFor(m => m.Name); //.GroupIndex(0)
-            col.AddFor(m => m.MaxPostCount).Format(Format.FixedPoint);
+            col.AddFor(m => m.Name).EditorOptions(new { showClearButton = true }); //.GroupIndex(0)
+            col.AddFor(m => m.MaxPostCount).Format(Format.FixedPoint).EditorOptions(new { showClearButton = true });
             //col.AddFor(m => m.MaxPostCount).Format(Format.FixedPoint);
             //col.AddFor(m=>m.InsertDate).DataType(GridColumnDataType.String).FormItem(f=>f.Visible(false));
             col.Add().Caption("ستون گروهی").Alignment(HorizontalAlignment.Center).Columns(c=>{
-               
-                c.AddFor(m => m.MaxDate).DataType(GridColumnDataType.String)
+                c.AddFor(m => m.MaxDate).DataType(GridColumnDataType.String).EditorOptions(new { showClearButton = true })
                 .EditCellTemplate(@<text><div style="direction:ltr">@(Html.DevExtreme().TextBox().Mask("0000/00/00").ShowClearButton(true)
                 .Value(new JS("data.MaxDate")).OnValueChanged(@"function(args){ setValue(args.value); }")  )</div> </text>);
-                c.AddFor(m=>m.InsertDate).DataType(GridColumnDataType.String).FormItem(f=>f.Visible(false));
+                c.AddFor(m=>m.InsertDate).DataType(GridColumnDataType.String).FormItem(f=>f.Visible(false)).EditorOptions(new { showClearButton = true });
             });
         })
         .Editing(e => e

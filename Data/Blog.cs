@@ -6,6 +6,7 @@ namespace MvcCore.Data
 {
     public partial class Blog
     {
+        [DisplayName("کد سیستم")]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "الزامی است")]
